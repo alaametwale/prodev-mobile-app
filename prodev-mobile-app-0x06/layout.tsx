@@ -1,48 +1,61 @@
-// app/_layout.tsx
+// app/(home)/_layout.tsx
 import { Tabs } from "expo-router";
-import { AntDesign, Feather, EvilIcons, Ionicons, FontAwesome } from "@expo/vector-icons";
+import { View, Text } from "react-native";
+import { Ionicons, Feather, MaterialIcons } from "@expo/vector-icons";
 
-export default function RootLayout() {
+export default function HomeLayout() {
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#34967C",
-        headerShown: false,
+        tabBarInactiveTintColor: "gray",
+        tabBarStyle: { backgroundColor: "#fff", height: 60 },
       }}
     >
       <Tabs.Screen
-        name="(home)/index"
+        name="index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="(home)/search"
+        name="search"
         options={{
           title: "Search",
-          tabBarIcon: ({ color }) => <Feather name="search" size={24} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="search" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="(home)/saved"
+        name="saved"
         options={{
           title: "Saved",
-          tabBarIcon: ({ color }) => <EvilIcons name="heart" size={27} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="favorite-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="(home)/inbox"
+        name="inbox"
         options={{
           title: "Inbox",
-          tabBarIcon: ({ color }) => <Ionicons name="chatbubbles-outline" size={24} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="chatbubble-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="(home)/profile"
+        name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color }) => <FontAwesome name="user-o" size={24} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" size={size} color={color} />
+          ),
+          // لاحظ: لم نضع headerShown هنا، لكي نستخدم Tailwind styling داخل Profile
         }}
       />
     </Tabs>
